@@ -2,7 +2,8 @@
 
 namespace Test;
 use App\ITakeCans;
-use App\Drawer as Drawer;
+use App\UserInterface;
+use App\Drawer;
 use Mockery as m;
 
 /**
@@ -11,7 +12,7 @@ use Mockery as m;
 class DrawerDisplaysTest extends m\Adapter\Phpunit\MockeryTestCase {
 
     public function testDispenseCanNotifiesDisplay() {
-        $display = m::mock();
+        $display = m::mock(UserInterface::class);
         $canBin = m::mock(ITakeCans::class);
 
         $drawer = new Drawer($display, $canBin);
