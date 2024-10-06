@@ -1,16 +1,21 @@
 <?php
 
-namespace App;
+namespace Test;
 
 use Hamcrest\Util;
+use App\Choice as C;
+use App\VendingMachine as V;
 use PHPUnit\Framework\TestCase;
 
 Util::registerGlobalFunctions();
 
 class VendingMachineTest extends TestCase
 {
-    public function testFrameworkWorks()
+    public function testChoicelessMachineDeliversNothing()
     {
-       assertThat(false, equalTo(true));
+
+        $machine = new V();
+        $choice = C::Cola->value;
+        assertThat($machine->deliver($choice)->value(), equalTo("cocke"));
     }
 }

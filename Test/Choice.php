@@ -2,7 +2,7 @@
 
 namespace App;
 
-class Choice
+enum Choice : string
 {
-
+    case Cola = "Cola";
 }

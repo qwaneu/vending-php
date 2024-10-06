@@ -2,7 +2,7 @@
 
 namespace App;
 
-class Can
+enum Can: string
 {
-
+    case Coke = "Coke";
 }
