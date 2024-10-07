@@ -17,7 +17,6 @@ class PaidVendingMachineTest extends HamcrestTestCase
     {
         parent::setUp();
         $this->machine = new VendingMachine();
-       $this->machine->configure(Choice::Cola, Can::Coke);
     }
 
     public function testMachineWithNoPaymentDeliversNothing() {
