@@ -37,4 +37,9 @@ class PaidVendingMachineTest extends HamcrestTestCase
         $this->machine->pay(50);
         assertThat($this->machine->deliver(Choice::Cola)->value, equalTo(Can::Nothing->value));
     }
+    public function testDeliverCheapestDrinkWhenPaidForThat() {
+        $this->machine->configure(Choice::FizzyOrange, Can::Fanta, 150);
+        $this->machine->pay(100);
+        assertThat($this->machine->deliver(Choice::Cola)->value, equalTo(Can::Coke->value));
+    }
 }

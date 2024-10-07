@@ -14,7 +14,7 @@ class VendingMachine
         if(!array_key_exists($choice->value, $this->choices)) {
             return Can::Nothing;
         }
-        if($this->price > $this->credits) {
+        if($this->prices[$choice->value] > $this->credits) {
             return Can::Nothing;
         }
         return $this->choices[$choice->value];
@@ -24,6 +24,7 @@ class VendingMachine
     {
         $this->choices[$choice->value] = $drink;
         $this->price = $price;
+        $this->prices[$choice->value] = $price;
     }
 
     public function pay(int $amount): void
