@@ -12,7 +12,8 @@ class VendingMachine
         if($this->choices[$choice->value] === null) {
             return Can::Nothing;
         }
-        return $this->choices[$choice->value];
+        $result = $this->choices[$choice->value];
+        return $result;
     }
 
     public function configure(Choice $choice, Can $drink)

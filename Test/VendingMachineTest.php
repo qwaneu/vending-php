@@ -5,6 +5,7 @@ namespace Test;
 use App\Choice;
 use App\Can;
 use App\VendingMachine;
+use PHPUnit\Metadata\CoversNothing;
 
 
 class VendingMachineTest extends HamcrestTestCase
@@ -25,7 +26,7 @@ class VendingMachineTest extends HamcrestTestCase
     }
 
     public function testMachineConfiguredWithCokeDeliversCoke() {
-        assertThat($this->machine->deliver(Choice::Cola)->value, equalTo("Coke"));
+        assertThat($this->machine->deliver(Choice::Cola)->value, equalTo(Can::Coke->value));
     }
 
     public function testMachineConfiguredWithFantaAndCokeDeliversFanta()
