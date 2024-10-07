@@ -5,7 +5,6 @@ namespace Test;
 use App\Choice;
 use App\Can;
 use App\VendingMachine;
-use PHPUnit\Metadata\CoversNothing;
 
 
 class VendingMachineTest extends HamcrestTestCase
@@ -33,5 +32,4 @@ class VendingMachineTest extends HamcrestTestCase
     {
         assertThat($this->machine->deliver(Choice::FizzyOrange)->value, equalTo("Fanta"));
     }
-
 }
