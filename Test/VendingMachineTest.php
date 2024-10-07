@@ -14,6 +14,9 @@ class VendingMachineTest extends HamcrestTestCase
     public function setUp(): void {
         parent::setUp();
         $this->machine = new VendingMachine();
+
+        $this->machine->configure(Choice::FizzyOrange, Can::Fanta);
+        $this->machine->configure(Choice::Cola, Can::Coke);
     }
     public function testMachineDeliversNothingForUnconfiguredChoice()
     {
@@ -22,14 +25,11 @@ class VendingMachineTest extends HamcrestTestCase
     }
 
     public function testMachineConfiguredWithCokeDeliversCoke() {
-        $this->machine->configure(Choice::Cola, Can::Coke);
         assertThat($this->machine->deliver("Cola")->value, equalTo("Coke"));
     }
 
     public function testMachineConfiguredWithFantaAndCokeDeliversFanta()
     {
-        $this->machine->configure(Choice::FizzyOrange, Can::Fanta);
-        $this->machine->configure(Choice::Cola, Can::Coke);
         assertThat($this->machine->deliver("FizzyOrange")->value, equalTo("Fanta"));
     }
 
