@@ -5,10 +5,10 @@ namespace App;
 class VendingMachine
 {
 
+    private Can $chosen_drink = Can::Nothing;
+
     public function deliver($choice)
     {
-        if(!$this->chosen_drink)
-            return Can::Nothing;
         return $this->chosen_drink;
     }
 
