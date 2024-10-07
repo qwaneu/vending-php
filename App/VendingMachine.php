@@ -20,13 +20,13 @@ class VendingMachine
         return $this->choices[$choice->value];
     }
 
-    public function configure(Choice $choice, Can $drink, int $price = 0)
+    public function configure(Choice $choice, Can $drink, int $price = 0): void
     {
         $this->choices[$choice->value] = $drink;
         $this->price = $price;
     }
 
-    public function pay(int $amount)
+    public function pay(int $amount): void
     {
         $this->credits = 100;
     }
