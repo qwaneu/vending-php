@@ -2,12 +2,9 @@
 
 namespace App;
 
-use PSpell\Dictionary;
-
 class VendingMachine
 {
 
-    private Can $chosen_drink = Can::Nothing;
     private array $choices = array();
 
     public function deliver($choice)
@@ -20,7 +17,6 @@ class VendingMachine
 
     public function configure(Choice $choice, Can $drink)
     {
-        $this->chosen_drink = $drink;
         $this->choices[$choice->value] = $drink;
     }
 }
