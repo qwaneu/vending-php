@@ -12,7 +12,7 @@ class VendingMachine
         if($this->choices[$choice->value] === null) {
             return Can::Nothing;
         }
-        if($this->price != 0) {
+        if($this->price != $this->credits) {
             return Can::Nothing;
         }
         $result = $this->choices[$choice->value];
@@ -23,5 +23,10 @@ class VendingMachine
     {
         $this->choices[$choice->value] = $drink;
         $this->price = $price;
+    }
+
+    public function pay(int $amount)
+    {
+        $this->credits = 100;
     }
 }
