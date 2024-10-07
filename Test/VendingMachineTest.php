@@ -21,7 +21,7 @@ class VendingMachineTest extends HamcrestTestCase
     public function testMachineDeliversNothingForUnconfiguredChoice()
     {
         $choice = Choice::Beer;
-        assertThat($this->machine->deliver($choice)->value, equalTo("Nothing"));
+        assertThat($this->machine->deliver($choice)->value, equalTo(Can::Nothing->value));
     }
 
     public function testMachineConfiguredWithCokeDeliversCoke() {
