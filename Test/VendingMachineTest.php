@@ -22,16 +22,16 @@ class VendingMachineTest extends HamcrestTestCase
     }
 
     public function testMachineConfiguredWithCokeDeliversCoke() {
-        $this->machine->configure(Choice: Choice::Cola, drink: Can::Coke);
+        $this->machine->configure(Choice::Cola, Can::Coke);
         assertThat($this->machine->deliver("Cola")->value, equalTo("Coke"));
     }
 
-    /*
     public function testMachineConfiguredWithFantaAndCokeDeliversFanta()
     {
-
-        assertThat($machine->deliver("FizzyOrange")->value, equalTo("Fanta"));
-    }*/
+        $this->machine->configure(Choice::FizzyOrange, Can::Fanta);
+        $this->machine->configure(Choice::Cola, Can::Coke);
+        assertThat($this->machine->deliver("FizzyOrange")->value, equalTo("Fanta"));
+    }
 
 
 

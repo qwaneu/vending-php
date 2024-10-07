@@ -2,18 +2,25 @@
 
 namespace App;
 
+use PSpell\Dictionary;
+
 class VendingMachine
 {
 
     private Can $chosen_drink = Can::Nothing;
+    private array $choices = array();
 
     public function deliver($choice)
     {
-        return $this->chosen_drink;
+        if($this->choices[$choice] === null) {
+            return Can::Nothing;
+        }
+        return $this->choices[$choice];
     }
 
-    public function configure(choice $Choice, Can $drink)
+    public function configure(Choice $choice, Can $drink)
     {
         $this->chosen_drink = $drink;
+        $this->choices[$choice->value] = $drink;
     }
 }
