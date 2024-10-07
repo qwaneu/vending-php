@@ -2,11 +2,13 @@
 
 namespace Test;
 
-use Hamcrest\Util;
 use App\Choice as C;
+use App\Can;
 use App\VendingMachine as V;
+use Hamcrest\Util;
 use PHPUnit\Framework\TestCase;
 
+// Necessary for assertThat
 Util::registerGlobalFunctions();
 
 class VendingMachineTest extends TestCase
@@ -16,6 +18,11 @@ class VendingMachineTest extends TestCase
 
         $machine = new V();
         $choice = C::Cola->value;
-        assertThat($machine->deliver($choice)->value(), equalTo("cocke"));
+        assertThat($machine->deliver($choice)->value, equalTo("Nothing"));
+    }
+
+    protected function tearDown(): void
+    {
+        $this->addToAssertionCount(\Hamcrest\MatcherAssert::getCount());
     }
 }

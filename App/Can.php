@@ -4,5 +4,5 @@ namespace App;
 
 enum Can: string
 {
-    case Coke = "Coke";
+    case Nothing = "Nothing";
 }
