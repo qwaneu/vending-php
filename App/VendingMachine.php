@@ -7,7 +7,6 @@ class VendingMachine
 
     private array $choices = array();
     private int $credits = 0;
-    private int $price = 0;
     private mixed $prices = array();
 
     public function deliver(Choice $choice): Can
@@ -24,8 +23,7 @@ class VendingMachine
     public function configure(Choice $choice, Can $drink, int $price = 0): void
     {
         $this->choices[$choice->value] = $drink;
-        $this->price = $price;
-        $this->prices[$choice->value] = $price;
+         $this->prices[$choice->value] = $price;
     }
 
     public function pay(int $amount): void
