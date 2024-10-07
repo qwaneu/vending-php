@@ -2,8 +2,8 @@
 
 namespace Test;
 
-use App\Choice as C;
-use App\VendingMachine as V;
+use App\Choice;
+use App\VendingMachine;
 
 
 class VendingMachineTest extends HamcrestTestCase
@@ -11,9 +11,11 @@ class VendingMachineTest extends HamcrestTestCase
     public function testChoicelessMachineDeliversNothing()
     {
 
-        $machine = new V();
-        $choice = C::Cola->value;
+        $machine = new VendingMachine();
+        $choice = Choice::Cola->value;
         assertThat($machine->deliver($choice)->value, equalTo("Nothing"));
     }
+
+
 
 }
