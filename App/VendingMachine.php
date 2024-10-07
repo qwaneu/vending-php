@@ -6,6 +6,8 @@ class VendingMachine
 {
 
     private array $choices = array();
+    private int $credits = 0;
+    private int $price = 0;
 
     public function deliver(Choice $choice): Can
     {
@@ -15,8 +17,7 @@ class VendingMachine
         if($this->price != $this->credits) {
             return Can::Nothing;
         }
-        $result = $this->choices[$choice->value];
-        return $result;
+        return $this->choices[$choice->value];
     }
 
     public function configure(Choice $choice, Can $drink, int $price = 0)
