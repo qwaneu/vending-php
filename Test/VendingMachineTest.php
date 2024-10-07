@@ -9,6 +9,8 @@ use App\VendingMachine;
 
 class VendingMachineTest extends HamcrestTestCase
 {
+    private VendingMachine $machine;
+
     public function setUp(): void {
         parent::setUp();
         $this->machine = new VendingMachine();
