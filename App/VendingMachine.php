@@ -11,7 +11,7 @@ class VendingMachine
 
     public function deliver(Choice $choice): Can
     {
-        if($this->choices[$choice->value] === null) {
+        if(!array_key_exists($choice->value, $this->choices)) {
             return Can::Nothing;
         }
         if($this->price != $this->credits) {
