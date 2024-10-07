@@ -20,17 +20,17 @@ class VendingMachineTest extends HamcrestTestCase
     }
     public function testMachineDeliversNothingForUnconfiguredChoice()
     {
-        $choice = Choice::Beer->value;
+        $choice = Choice::Beer;
         assertThat($this->machine->deliver($choice)->value, equalTo("Nothing"));
     }
 
     public function testMachineConfiguredWithCokeDeliversCoke() {
-        assertThat($this->machine->deliver("Cola")->value, equalTo("Coke"));
+        assertThat($this->machine->deliver(Choice::Cola)->value, equalTo("Coke"));
     }
 
     public function testMachineConfiguredWithFantaAndCokeDeliversFanta()
     {
-        assertThat($this->machine->deliver("FizzyOrange")->value, equalTo("Fanta"));
+        assertThat($this->machine->deliver(Choice::FizzyOrange)->value, equalTo("Fanta"));
     }
 
 }
