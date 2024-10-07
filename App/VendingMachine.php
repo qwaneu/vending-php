@@ -8,6 +8,7 @@ class VendingMachine
     private array $choices = array();
     private int $credits = 0;
     private int $price = 0;
+    private mixed $prices = array();
 
     public function deliver(Choice $choice): Can
     {
