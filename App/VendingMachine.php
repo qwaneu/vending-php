@@ -28,6 +28,6 @@ class VendingMachine
 
     public function pay(int $amount): void
     {
-        $this->credits = 100;
+        $this->credits = $amount;
     }
 }
