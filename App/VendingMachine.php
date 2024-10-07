@@ -14,7 +14,7 @@ class VendingMachine
         if(!array_key_exists($choice->value, $this->choices)) {
             return Can::Nothing;
         }
-        if($this->price != $this->credits) {
+        if($this->price > $this->credits) {
             return Can::Nothing;
         }
         return $this->choices[$choice->value];

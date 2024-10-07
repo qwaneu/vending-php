@@ -17,22 +17,24 @@ class PaidVendingMachineTest extends HamcrestTestCase
     {
         parent::setUp();
         $this->machine = new VendingMachine();
+        $this->machine->configure(Choice::Cola, Can::Coke, 100);
     }
 
     public function testMachineWithNoPaymentDeliversNothing() {
-        $this->machine->configure(Choice::Cola, Can::Coke, 100);
         assertThat($this->machine->deliver(Choice::Cola)->value, equalTo(Can::Nothing->value));
     }
 
     public function testPaidExactDeliversDrink() {
-        $this->machine->configure(Choice::Cola, Can::Coke, 100);
         $this->machine->pay(100);
         assertThat($this->machine->deliver(Choice::Cola)->value, equalTo(Can::Coke->value));
     }
 
     public function testPaidTooMuchDeliversDrink() {
-        $this->machine->configure(Choice::Cola, Can::Coke, 100);
         $this->machine->pay(150);
         assertThat($this->machine->deliver(Choice::Cola)->value, equalTo(Can::Coke->value));
+    }
+    public function testPaidTooLittleDoesNotDeliverDrink() {
+        $this->machine->pay(50);
+        assertThat($this->machine->deliver(Choice::Cola)->value, equalTo(Can::Nothing->value));
     }
 }
