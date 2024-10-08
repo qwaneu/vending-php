@@ -10,11 +10,11 @@ class VendingMachineTest extends HamcrestTestCase
 {
     private VendingMachine $vendingMachine;
 
-    private $noMoney = 0;
-    private $notEnoughMoney = 1;
-    private $enoughMoneyForEnergy = 2;
-    private $enoughMoneyForDietCoke = 16;
-    private $tooMuchMoney = 400;
+    private int $noMoney = 0;
+    private int $notEnoughMoney = 1;
+    private int $enoughMoneyForEnergy = 2;
+    private int $enoughMoneyForDietCoke = 16;
+    private int $tooMuchMoney = 400;
 
     public function setUp(): void
     {
@@ -46,5 +46,15 @@ class VendingMachineTest extends HamcrestTestCase
     public function testNotEnoughMoneyNoCan()
     {
         assertThat($this->vendingMachine->buyCan($this->notEnoughMoney, Choice::EnergyDrink)->value, equalTo(Can::Nothing->value));
+    }
+
+    public function testEnoughMoneyCan()
+    {
+        assertThat($this->vendingMachine->buyCan($this->enoughMoneyForEnergy, Choice::EnergyDrink)->value, equalTo(Can::Nalu->value));
+    }
+
+    public function testTooMuchMoneyCan()
+    {
+        assertThat($this->vendingMachine->buyCan($this->tooMuchMoney, Choice::DietCaffeineDrink)->value, equalTo(Can::DietCoke->value));
     }
 }
