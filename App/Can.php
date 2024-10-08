@@ -2,9 +2,20 @@
 
 namespace App;
 
-enum Can: string
+class Can
 {
-    case Nothing = 'nothing';
-    case Nalu = 'nalu';
-    case DietCoke = 'dietcoke';
+
+    public Brand $brand;
+    public Category $category;
+    public int $price;
+
+
+    public function __construct(Brand $brand, Category $category, int $price)
+    {
+        $this->brand=$brand;
+        $this->category=$category;
+        $this->price=$price;
+    }
+
+
 }

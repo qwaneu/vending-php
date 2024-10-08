@@ -2,7 +2,7 @@
 
 namespace App;
 
-enum Choice: string
+enum Category: string
 {
     case EnergyDrink = 'EnergyDrink';
     case DietCaffeineDrink = 'DietCoke';
