@@ -2,7 +2,7 @@
 
 namespace App;
 
-class VendingMachine
+enum Can
 {
 
 }

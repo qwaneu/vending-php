@@ -2,7 +2,7 @@
 
 namespace App;
 
-interface UserInterface
+interface DispensingIndicator
 {
     function tellCannIsDispensed(): void;
 }

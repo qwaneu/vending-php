@@ -5,12 +5,10 @@ namespace App;
 class Drawer
 {
     private $display;
-    private $canBin;
 
-    public function __construct($display, $canBin)
+    public function __construct($display)
     {
         $this->display = $display;
-        $this->canBin = $canBin;
     }
 
     public function dispenseCan()
