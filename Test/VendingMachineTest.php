@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-namespace Test;
+namespace Tests;
 
 use App\Can;
 use App\Choice;
@@ -30,5 +30,10 @@ class VendingMachineTest extends HamcrestTestCase
     public function testDeliverDietCokeWhenConfigured()
     {
         assertThat($this->vendingMachine->deliverDrink(Choice::DietCaffeineDrink)->value, equalTo(Can::DietCoke->value));
+    }
+
+    public function testNoMoneyNoFun()
+    {
+        assertThat($this->vendingMachine->buyCan(0, Choice::EnergyDrink)->value, equalTo(Can::Nothing->value));
     }
 }
