@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-namespace Test;
+namespace Tests;
 
 use App\Can;
 use App\Choice;
