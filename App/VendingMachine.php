@@ -1,14 +1,11 @@
 <?php
 
 namespace App;
+
 class VendingMachine
 {
 
-    public function __construct()
-    {
-    }
-
-    public function deliverDrink($EnergyDrink): Can
+    public function deliverDrink(Choice $choice): Can
     {
         return Can::Nothing;
     }
