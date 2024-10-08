@@ -23,4 +23,11 @@ class VendingMachineTest extends HamcrestTestCase
         $this->vendingMachine->configure(Choice::EnergyDrink, Can::Nalu);
         assertThat($this->vendingMachine->deliverDrink(Choice::EnergyDrink)->value , equalTo(Can::Nalu->value));
     }
+
+    public function testDeliverDietCokeWhenConfigured()
+    {
+        $this->vendingMachine->configure(Choice::DietCoke, Can::DietCoke);
+        $this->vendingMachine->configure(Choice::EnergyDrink, Can::Nalu);
+        assertThat($this->vendingMachine->deliverDrink(Choice::DietCoke)->value, equalTo(Can::DietCoke->value));
+    }
 }
