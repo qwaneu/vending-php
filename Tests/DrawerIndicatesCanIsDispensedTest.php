@@ -11,7 +11,7 @@ use Mockery as m;
  */
 class DrawerIndicatesCanIsDispensedTest extends m\Adapter\Phpunit\MockeryTestCase {
 
-    public function testDispenseCanNotifiesDisplay() {
+    public function testDispenseCanIndicatesDipsensed() {
         $display = m::mock(DispensingIndicator::class);
 
         $drawer = new Drawer($display);
