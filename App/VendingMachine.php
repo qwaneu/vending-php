@@ -24,7 +24,7 @@ class VendingMachine
         return array_key_exists($choice->name, $this->choices) === false;
     }
 
-    public function buyCan(int $amount, Choice $EnergyDrink)
+    public function buyCan(int $amount, Choice $EnergyDrink): Can
     {
         return Can::Nothing;
     }
