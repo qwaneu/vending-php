@@ -6,6 +6,8 @@ class VendingMachine
 {
     private array $choices = [];
 
+    private array $priceList = [];
+
     public function deliverDrink(Choice $choice): Can
     {
         if($this->isUnavailable($choice)) {
@@ -14,9 +16,10 @@ class VendingMachine
         return $this->choices[$choice->name];
     }
 
-    public function configure(Choice $choice, Can $drink): void
+    public function configure(Choice $choice, Can $drink, int $price): void
     {
         $this->choices[$choice->name] = $drink;
+        $this->priceList[$choice->name] = $price;
     }
 
     public function isUnavailable(Choice $choice): bool
@@ -24,8 +27,12 @@ class VendingMachine
         return array_key_exists($choice->name, $this->choices) === false;
     }
 
-    public function buyCan(int $amount, Choice $EnergyDrink): Can
+    public function buyCan(int $amount, Choice $choice): Can
     {
-        return Can::Nothing;
+        if ($amount < $this->priceList[$choice->name]) {
+            return Can::Nothing;
+        }
+
+        return $this->deliverDrink($choice);
     }
 }
