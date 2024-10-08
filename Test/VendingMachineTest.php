@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 namespace Test;
 
 use App\Can;
@@ -14,22 +14,21 @@ class VendingMachineTest extends HamcrestTestCase
     {
         parent::setUp();
         $this->vendingMachine = new VendingMachine();
+        $this->vendingMachine->configure(Choice::DietCaffeineDrink, Can::DietCoke);
+        $this->vendingMachine->configure(Choice::EnergyDrink, Can::Nalu);
     }
     public function testDeliverNothing()
     {
-        assertThat($this->vendingMachine->deliverDrink(Choice::EnergyDrink)->value, equalTo(Can::Nothing->value));
+        assertThat($this->vendingMachine->deliverDrink(Choice::Beer)->value, equalTo(Can::Nothing->value));
     }
 
     public function testDeliverEnergyDrinkWhenConfigured()
     {
-        $this->vendingMachine->configure(Choice::EnergyDrink, Can::Nalu);
         assertThat($this->vendingMachine->deliverDrink(Choice::EnergyDrink)->value , equalTo(Can::Nalu->value));
     }
 
     public function testDeliverDietCokeWhenConfigured()
     {
-        $this->vendingMachine->configure(Choice::DietCoke, Can::DietCoke);
-        $this->vendingMachine->configure(Choice::EnergyDrink, Can::Nalu);
-        assertThat($this->vendingMachine->deliverDrink(Choice::DietCoke)->value, equalTo(Can::DietCoke->value));
+        assertThat($this->vendingMachine->deliverDrink(Choice::DietCaffeineDrink)->value, equalTo(Can::DietCoke->value));
     }
 }

@@ -5,5 +5,6 @@ namespace App;
 enum Choice: string
 {
     case EnergyDrink = 'EnergyDrink';
-    case DietCoke = 'DietCoke';
+    case DietCaffeineDrink = 'DietCoke';
+    case Beer = 'Beer';
 }
