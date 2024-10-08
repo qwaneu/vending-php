@@ -33,7 +33,7 @@ class VendingMachine
             return ['drink' => Can::Nothing, 'change' => $amount];
         }
 
-        $change = $this->priceList[$choice->name] - $amount;
+        $change = $amount - $this->priceList[$choice->name];
         return ['drink' => $this->deliverDrink($choice), 'change' => $change];
     }
 }

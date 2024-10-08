@@ -59,10 +59,17 @@ class VendingMachineTest extends HamcrestTestCase
         assertThat($this->vendingMachine->buyCan($this->tooMuchMoney, Choice::DietCaffeineDrink)['drink']->value, equalTo(Can::DietCoke->value));
     }
 
-    public function testGetNoChange() {
-
+    public function testGetNoChange()
+    {
         $noChangeResult = ['drink' => Can::Nalu, 'change' => $this->noChange];
 
         assertThat($this->vendingMachine->buyCan($this->enoughMoneyForEnergy, Choice::EnergyDrink), equalTo($noChangeResult));
+    }
+
+    public function testGetChange()
+    {
+        $changeResult = ['drink' => Can::Nalu, 'change' => $this->tooMuchMoney - $this->enoughMoneyForEnergy];
+
+        assertThat($this->vendingMachine->buyCan($this->tooMuchMoney, Choice::EnergyDrink), equalTo($changeResult));
     }
 }
