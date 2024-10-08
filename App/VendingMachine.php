@@ -27,12 +27,13 @@ class VendingMachine
         return array_key_exists($choice->name, $this->choices) === false;
     }
 
-    public function buyCan(int $amount, Choice $choice): Can
+    public function buyCan(int $amount, Choice $choice): array
     {
         if ($amount < $this->priceList[$choice->name]) {
-            return Can::Nothing;
+            return ['drink' => Can::Nothing, 'change' => $amount];
         }
 
-        return $this->deliverDrink($choice);
+        $change = $this->priceList[$choice->name] - $amount;
+        return ['drink' => $this->deliverDrink($choice), 'change' => $change];
     }
 }

@@ -15,6 +15,7 @@ class VendingMachineTest extends HamcrestTestCase
     private int $enoughMoneyForEnergy = 2;
     private int $enoughMoneyForDietCoke = 16;
     private int $tooMuchMoney = 400;
+    private int $noChange = 0;
 
     public function setUp(): void
     {
@@ -40,21 +41,28 @@ class VendingMachineTest extends HamcrestTestCase
 
     public function testNoMoneyNoFun()
     {
-        assertThat($this->vendingMachine->buyCan($this->noMoney, Choice::EnergyDrink)->value, equalTo(Can::Nothing->value));
+        assertThat($this->vendingMachine->buyCan($this->noMoney, Choice::EnergyDrink)['drink']->value, equalTo(Can::Nothing->value));
     }
 
     public function testNotEnoughMoneyNoCan()
     {
-        assertThat($this->vendingMachine->buyCan($this->notEnoughMoney, Choice::EnergyDrink)->value, equalTo(Can::Nothing->value));
+        assertThat($this->vendingMachine->buyCan($this->notEnoughMoney, Choice::EnergyDrink)['drink']->value, equalTo(Can::Nothing->value));
     }
 
     public function testEnoughMoneyCan()
     {
-        assertThat($this->vendingMachine->buyCan($this->enoughMoneyForEnergy, Choice::EnergyDrink)->value, equalTo(Can::Nalu->value));
+        assertThat($this->vendingMachine->buyCan($this->enoughMoneyForEnergy, Choice::EnergyDrink)['drink']->value, equalTo(Can::Nalu->value));
     }
 
     public function testTooMuchMoneyCan()
     {
-        assertThat($this->vendingMachine->buyCan($this->tooMuchMoney, Choice::DietCaffeineDrink)->value, equalTo(Can::DietCoke->value));
+        assertThat($this->vendingMachine->buyCan($this->tooMuchMoney, Choice::DietCaffeineDrink)['drink']->value, equalTo(Can::DietCoke->value));
+    }
+
+    public function testGetNoChange() {
+
+        $noChangeResult = ['drink' => Can::Nalu, 'change' => $this->noChange];
+
+        assertThat($this->vendingMachine->buyCan($this->enoughMoneyForEnergy, Choice::EnergyDrink), equalTo($noChangeResult));
     }
 }
