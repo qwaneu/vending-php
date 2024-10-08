@@ -13,7 +13,7 @@ class VendingMachine
         return $this->drink;
     }
 
-    public function configure(Choice $choice, Can $drink)
+    public function configure(Choice $choice, Can $drink): void
     {
         $this->drink = $drink;
     }
