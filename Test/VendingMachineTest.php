@@ -8,6 +8,8 @@ use App\VendingMachine;
 
 class VendingMachineTest extends HamcrestTestCase
 {
+    private VendingMachine $vendingMachine;
+
     public function setUp(): void
     {
         parent::setUp();
