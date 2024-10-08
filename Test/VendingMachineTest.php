@@ -31,4 +31,9 @@ class VendingMachineTest extends HamcrestTestCase
     {
         assertThat($this->vendingMachine->deliverDrink(Choice::DietCaffeineDrink)->value, equalTo(Can::DietCoke->value));
     }
+
+    public function testBuyCan()
+    {
+        assertThat($this->vendingMachine->buyDrink(Choice::EnergyDrink, 1), equalTo(Can::Nalu));
+    }
 }
