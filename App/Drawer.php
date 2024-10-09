@@ -4,9 +4,9 @@ namespace App;
 
 class Drawer
 {
-    private $dispensingIndicator;
+    private DispensingIndicator $dispensingIndicator;
 
-    public function __construct($dispensingIndicator)
+    public function __construct(DispensingIndicator $dispensingIndicator)
     {
         $this->dispensingIndicator = $dispensingIndicator;
     }
