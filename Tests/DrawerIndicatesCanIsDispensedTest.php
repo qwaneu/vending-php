@@ -11,14 +11,18 @@ use Mockery as m;
  */
 class DrawerIndicatesCanIsDispensedTest extends m\Adapter\Phpunit\MockeryTestCase {
 
-    public function testDispenseCanIndicatesDipsensed() {
-        $display = m::mock(DispensingIndicator::class);
+    public function testDispenseCanIndicatesDispensed() {
+        $dispensingIndicator = m::mock(DispensingIndicator::class);
 
-        $drawer = new Drawer($display);
+        $drawer = new Drawer($dispensingIndicator);
 
         // Either use `expects` or `shouldReceive(...)->once() otherwise you will get errors about no assertions
-        $display->expects('tellCanIsDispensed');
+        $dispensingIndicator->expects('tellCanIsDispensed');
 
         $drawer->dispenseCan();
     }
+
+
+
+
 }

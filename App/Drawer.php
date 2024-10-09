@@ -4,15 +4,15 @@ namespace App;
 
 class Drawer
 {
-    private $display;
+    private $dispensingIndicator;
 
-    public function __construct($display)
+    public function __construct($dispensingIndicator)
     {
-        $this->display = $display;
+        $this->dispensingIndicator = $dispensingIndicator;
     }
 
     public function dispenseCan()
     {
-        $this->display->tellCanIsDispensed();
+        $this->dispensingIndicator->tellCanIsDispensed();
     }
 }
