@@ -4,5 +4,5 @@ namespace App;
 
 interface DispensingIndicator
 {
-    function tellCannIsDispensed(): void;
+    function tellCanIsDispensed(): void;
 }
