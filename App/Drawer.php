@@ -4,18 +4,15 @@ namespace App;
 
 class Drawer
 {
-    private DispensingIndicator $dispensingIndicator;
-    private StockIndicator $stockIndicator;
-    private int $stockLevel;
-
-    public function __construct(DispensingIndicator $dispensingIndicator, StockIndicator $stockIndicator, int $stockLevel)
+    public function __construct(
+        private readonly DispensingIndicator $dispensingIndicator,
+        private readonly StockIndicator      $stockIndicator,
+        private readonly int $stockLevel
+    )
     {
-        $this->dispensingIndicator = $dispensingIndicator;
-        $this->stockIndicator = $stockIndicator;
-        $this->stockLevel = $stockLevel;
     }
 
-    public function dispenseCan()
+    public function dispenseCan() : void
     {
         if($this->stockLevel ==0 ) {
             $this->stockIndicator->tellOutOfStock("Coke");
